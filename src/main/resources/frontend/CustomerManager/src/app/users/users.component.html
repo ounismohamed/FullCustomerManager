@@ -1,0 +1,71 @@
+<h1 style="text-align: center">Users</h1>
+<br>
+<span class="col-md-6" style="text-align: center">
+  <button class="btn btn-primary" data-toggle="modal" data-target="#myModal">Add User</button>
+</span>
+<span class="col-md-6" style="text-align: center">
+  <button class="btn btn-primary" (click)="logout()">Logout</button>
+</span>
+<br>
+<br>
+
+<div class="panel-group" id="accordion">
+  <div class="panel panel-default" *ngFor="let x of accounts;let i = index" id="{{i}}">
+    <div class="panel-heading">
+      <h3 class="panel-title">
+        User :
+        <a data-toggle="collapse" data-parent="#accordion" href="#{{x.login}}">{{x.login}}</a>
+        <button *ngIf="x.login!='admin'" style="margin-left: 15px" class="btn btn-danger" (click)="deleteUser(i)">Delete</button>
+      </h3>
+    </div>
+    <div *ngIf="x.login!='admin'" id="{{x.login}}" class="panel-collapse collapse in">
+      <div class="panel-body">
+        <table class="table table-hover">
+          <thead>
+          <tr>
+            <th></th>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>Address</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Order Total</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let y of x.customers">
+            <td><span class="glyphicon glyphicon-user"></span></td>
+            <td>{{y.firstName}}</td>
+            <td>{{y.lastName}}</td>
+            <td>{{y.address}}</td>
+            <td>{{y.city}}</td>
+            <td>{{y.state}}</td>
+            <td>${{y.order}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">New User</h4>
+      </div>
+      <div class="modal-body">
+        <app-login></app-login>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,25 @@
+<div class="container-fluid">
+  <div class="col-md-3"></div>
+  <div class="col-md-6" style="text-align: center">
+    <div class="alert alert-warning alert-dismissible" role="alert" style="display: none">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"></button>
+      <strong>Warning!</strong> some areas are empties or the identifiers are wrong !!
+    </div>
+    <h2 style="font-weight: bold">{{title}}</h2>
+    <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+      <div class="form-group" style="text-align: center">
+        <label><h3 style="font-weight: bold">Username:</h3></label>
+        <input type="text" class="form-control" formControlName="username" placeholder="Username" id="username">
+      </div>
+      <div class="form-group" style="text-align: center">
+        <label><h3 style="font-weight: bold">Password:</h3></label>
+        <input type="password" class="form-control" formControlName="password" id="password" placeholder="Password">
+      </div>
+      <button type="submit" class="btn btn-primary btn-lg" [disabled]="loginForm.invalid">{{signInButton}}</button>
+    </form>
+    <!--<div><h3>{{error}}</h3></div>-->
+  </div>
+  <div class="col-md-3"></div>
+</div>
+
+
